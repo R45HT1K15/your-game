@@ -24,9 +24,9 @@ export default function Navbar() {
                 <div className="navbar-nav">
                     {name ? (
                         <>
-                            <Link className="nav-link active" aria-current="page" to='#'>Игры</Link>
-                            <Link>{name}</Link>
-                            <Link className="nav-link" to='#'>Общий рейтинг</Link>
+                            <Link to='/'>Игры</Link>
+                            <Link to={`/profile/${name}`}>{name}</Link>
+                            <Link className="nav-link" to='/raiting'>Общий рейтинг</Link>
                             <Link className="nav-link" to='#'>Выйти</Link>
                         </>
                     ) : (
