@@ -8,11 +8,11 @@ require('dotenv').config();
 
 
 //импорт вспомогательных ф-й
-const dbCheck = require('./db/dbCheck');
+// const dbCheck = require('../db/dbCheck');
 
 
  // вызов функции проверки соединения с базоый данных
-dbCheck();
+// dbCheck();
 
 //подключаем сессию и файлсторадже для хранения куки
 const session = require('express-session');
@@ -33,28 +33,20 @@ app.use(express.json());
 
 //создаем куки
 // время жизни cookies, ms (10 дней)
-const sessionConfig = {
-  name: 'sid', 
-  store: new FileStore({}), 
-  secret: process.env.COOKIE_SECRET, 
-  resave: false, 
-  saveUninitialized: false, 
-  cookie: {
-    secure: process.env.NODE_ENV === 'production', 
-    maxAge: 1000 * 60 * 60 * 24 * 10, 
-  },
-};
+// const sessionConfig = {
+//   name: 'sid', 
+//   store: new FileStore({}), 
+//   secret: process.env.COOKIE_SECRET, 
+//   resave: false, 
+//   saveUninitialized: false, 
+//   cookie: {
+//     secure: process.env.NODE_ENV === 'production', 
+//     maxAge: 1000 * 60 * 60 * 24 * 10, 
+//   },
+// };
 
-// мидлварка для сессии
-app.use(session(sessionConfig));
-
-// проверяем есть ли юзер на странице
-app.use((req, res, next) => {
-  console.log('\n\x1b[33m', 'req.session.user :', req.session?.user);
-  res.locals.username = req.session?.user?.name;
-  next();
-});
-
+// // мидлварка для сессии
+// app.use(session(sessionConfig));
 
 
 const PORT = process.env.PORT || 3100;
