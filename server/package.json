@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js --ignore session --ext js,jsx,json",
-    "test": "jest"
+    "dev": "nodemon ./src/app.js --ignore session --ext js,jsx,json",
+    "test": "jest",
+    "dbr": "npx sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate && npx sequelize db:seed:all",
+    "db-down": "npx sequelize db:migrate:undo:all; npx sequelize db:drop;"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +23,7 @@
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
+    "env": "^0.0.2",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "morgan": "^1.10.0",
