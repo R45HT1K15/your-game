@@ -1,10 +1,9 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-export default function TaskList () {
+export default function SupertopicList () {
     
     const supertopics = useSelector((store) => store.supertopics)
-    console.log('tasks', supertopics)
 
     return (
         <div className="container-list">
