@@ -1,10 +1,11 @@
+require('dotenv').config();
 const express = require('express'); 
 const app = express(); 
 require('@babel/register');
 const morgan = require('morgan'); 
 const cors = require('cors');
 const path = require('path');
-require('dotenv').config(); 
+
 
 
 //импорт вспомогательных ф-й
@@ -18,13 +19,19 @@ require('dotenv').config();
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
+const mainRouter = require('./routers/mainRouter');
+const signUpRouter = require('./routers/signUpRouter');
+const logInRouter = require('./routers/logInRouter');
+const logOutRouter = require('./routers/logOutRouter');
+
 // ! подключаем сессию и файлсторадже для хранения куки в РЕАКТЕ
 const corsOptions = {
   credentials: true, 
   origin: 'http://localhost:3000'
 }
+const { SECRET } = process.env;
 
-// app.use(cors());
+app.use(cors());
 app.use(cors(corsOptions));
 app.use(express.static(path.resolve('public')));
 app.use(morgan('dev'));
@@ -33,21 +40,25 @@ app.use(express.json());
 
 //создаем куки
 // время жизни cookies, ms (10 дней)
-// const sessionConfig = {
-//   name: 'sid', 
-//   store: new FileStore({}), 
-//   secret: process.env.COOKIE_SECRET, 
-//   resave: false, 
-//   saveUninitialized: false, 
-//   cookie: {
-//     secure: process.env.NODE_ENV === 'production', 
-//     maxAge: 1000 * 60 * 60 * 24 * 10, 
-//   },
-// };
+const sessionConfig = {
+  name: 'sid', 
+  store: new FileStore({}), 
+  secret: SECRET, 
+  resave: false, 
+  saveUninitialized: false, 
+  cookie: {
+    secure: process.env.NODE_ENV === 'production', 
+    maxAge: 1000 * 60 * 60 * 24 * 10, 
+  },
+};
 
-// // мидлварка для сессии
-// app.use(session(sessionConfig));
+// мидлварка для сессии
+app.use(session(sessionConfig));
 
+app.use('/', mainRouter);
+app.use('/signup', signUpRouter);
+app.use('/login', logInRouter);
+app.use('/logout', logOutRouter)
 
 const PORT = process.env.PORT || 3100;
 app.listen(PORT, (err) => {
