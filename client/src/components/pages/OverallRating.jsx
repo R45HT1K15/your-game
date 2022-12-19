@@ -7,20 +7,22 @@ export default function OverallRating () {
 
     return (
         <div className="container-list">
-            <h3>Выбери тему</h3>
+            <h3>Топ мира по SI game</h3>
+            <ol>
                 {Array.isArray(rating) ? (
                     rating.map((el) => (
-                        <>
-                            <div>
+                        <li>
+                            <div className="rate">
                                 <p>{el.user}</p>
                                 <p>{el.score}</p>
                             </div>
-                        </>
+                        </li>
                     ))
                 ) : (
                     rating
                 ) 
                 }
+            </ol>
         </div>
     )
 }

@@ -6,13 +6,13 @@ export default function Profile () {
 
     return (
         <div className="container-list">
-            <h3>Выбери тему</h3>
+            <h2>Твой рейтинг по всем играм</h2>
                 {Array.isArray(rating) ? (
                     rating.map((el) => (
                         <>
-                            <div>
-                                <p>{el.title}</p>
-                                <p>{el.score}</p>
+                            <div className="rate">
+                                <h3>{el.title}</h3>
+                                <h3>{el.score}</h3>
                             </div>
                         </>
                     ))

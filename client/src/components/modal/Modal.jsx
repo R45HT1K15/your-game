@@ -18,11 +18,21 @@ export function Modal ({ active, setActive, question = '' }) {
     }
     return (
         <div className={active ? "modal active" : "modal"} onClick={() => setActive(false)}>
-            <div className="modal__content" onClick={(e) => e.stopPropagation()}>
-                <form onSubmit={handleChange}>
-                    <label>{question.question}</label>
-                    <input type="text" placeholder="Введите ответ" name="answer"/>
-                    <button type="submit">Ответить</button>
+            <div onClick={(e) => e.stopPropagation()}>
+                <form  className="modal__content" onSubmit={handleChange}>
+                    <div className="timer">
+                        25
+                    </div>
+                    <div className='question'>
+                        <label>{question.question}</label>
+                    </div>
+                    <div className="inputsForAnswer">
+                        <input  className="inputForAnswer" type="text" placeholder="Введите ответ" name="answer"/>
+                        <button className="btnForAnswer" type="submit">Ответить</button>
+                    </div>
+                    <div>
+                        otvet
+                    </div>
                 </form>
             </div>
         </div>
