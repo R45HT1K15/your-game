@@ -13,6 +13,7 @@ export function Modal ({ active, setActive, question = '' }) {
         e.preventDefault()
         const answer = e.target.answer.value
         const data = await answerCheck(answer, question.id)
+        console.log('data', data)
         // dispatch({ type: types.ADD_PROFILE, payload: { id: data.id, name: data.name }})
     }
     return (
