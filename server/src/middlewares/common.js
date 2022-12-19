@@ -1,9 +1,9 @@
-const isAdmin = (req, res, next) => {
-  if (req.session.newUser?.email === "admin@gmail.com") {
+const isUser = (req, res, next) => {
+  if (req.session.user) {
     next();
   } else {
     res.redirect("/");
   }
 };
 
-module.exports = { isAdmin };
+module.exports = { isUser };
