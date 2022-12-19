@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(Stat, { foreignKey: 'user_id' })
       this.hasMany(IsCorrect, { foreignKey: 'user_id' })
       this.belongsToMany(Question, { through: 'IsCorrect', foreignKey: 'user_id' })
+      
     }
   }
   User.init({

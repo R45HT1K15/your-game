@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { startGame } from "../../functions/game";
+
 
 export default function SupertopicList () {
     
@@ -13,7 +15,7 @@ export default function SupertopicList () {
                     supertopics.map((supertopic) => (
                         <div className="list" key={supertopic.id}>
                             <h2>{supertopic.tema}</h2>
-                            <Link to={`/game/${supertopic.tema}`}>Начать игру</Link>
+                            <Link to={`/game/${supertopic.tema}`}><button className="btnForAuth" onClick={() => startGame(supertopic.id)}>Начать игру</button></Link>
                         </div>
                     ))
                 ) : (

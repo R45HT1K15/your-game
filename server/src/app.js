@@ -52,7 +52,7 @@ app.use('/signup', signUpRouter);
 app.use('/signin', logInRouter);
 app.use('/signout', logOutRouter)
 app.use('/check', checkRouter);
-app.use('/answer', answerRouter)
+app.use('/answer', answerRouter);
 
 app.listen(PORT, (err) => {
   if (err) return console.log('Ошибка запуска сервера.', err.message)
