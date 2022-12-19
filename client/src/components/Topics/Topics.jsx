@@ -6,7 +6,7 @@ import { Modal } from "../modal/Modal";
 export default function TopicList () {
 
     const params = useParams()
-    const topics = useSelector((store) => store.supertopics).filter((el) => el.tema === params.name)[0].Topics
+    const topics = useSelector((store) => store.supertopics).filter((el) => el.tema === params.name)[0]?.Topics
     console.log('topics', topics)
     const [modalActive, setModalActive] = useState(false)
     const [question, setQuestion] = useState()
