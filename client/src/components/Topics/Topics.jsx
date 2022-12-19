@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Modal } from "../modal/Modal";
 
 export default function TopicList () {
-    
-    const topics = useSelector((store) => store.topics)
+
+    const params = useParams()
+    const topics = useSelector((store) => store.supertopics).filter((el) => el.tema === params.name)[0].Topics
+    console.log('topics', topics)
     const [modalActive, setModalActive] = useState(false)
 
     return (

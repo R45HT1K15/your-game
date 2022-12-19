@@ -23,7 +23,7 @@ const corsOptions = {
   origin: 'http://localhost:3000'
 }
 
-const { SECRET, PORT } = process.env;
+const { COOKIE_SECRET, PORT } = process.env;
 
 app.use(cors(corsOptions));
 app.use(express.static(path.resolve('public')));
@@ -34,7 +34,7 @@ app.use(express.json());
 app.use(session({
   name: 'sid',
   store: new FileStore({}),
-  secret: SECRET,
+  secret: COOKIE_SECRET,
   resave: false,
   saveUninitialized: false,
   cookie: {

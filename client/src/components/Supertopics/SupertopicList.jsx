@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 export default function SupertopicList () {
     
     const supertopics = useSelector((store) => store.supertopics)
+    console.log('supertopics', supertopics)
 
     return (
         <div className="container-list">
@@ -12,7 +13,7 @@ export default function SupertopicList () {
                 {Array.isArray(supertopics) ? (
                     supertopics.map((supertopic) => (
                         <>
-                            <Link to={`/game/${supertopic.title}`}>{supertopic.title}</Link>
+                            <Link key={supertopic.id} to={`/game/${supertopic.tema}`}>{supertopic.tema}</Link>
                         </>
                     ))
                 ) : (
