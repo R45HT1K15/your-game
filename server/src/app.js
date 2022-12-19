@@ -16,6 +16,7 @@ const signUpRouter = require('./routers/signUpRouter');
 const logInRouter = require('./routers/logInRouter');
 const logOutRouter = require('./routers/logOutRouter');
 const topicRouter = require('./routers/topicRouter');
+const checkRouter = require('./routers/checkRouter')
 
 const corsOptions = {
   credentials: true,
@@ -24,7 +25,6 @@ const corsOptions = {
 
 const { SECRET, PORT } = process.env;
 
-app.use(cors());
 app.use(cors(corsOptions));
 app.use(express.static(path.resolve('public')));
 app.use(morgan('dev'));
@@ -47,8 +47,9 @@ app.use('/', mainRouter);
 app.use('/game', topicRouter);
 
 app.use('/signup', signUpRouter);
-app.use('/login', logInRouter);
-app.use('/logout', logOutRouter);
+app.use('/signin', logInRouter);
+app.use('/signout', logOutRouter)
+app.use('/check', checkRouter)
 
 app.listen(PORT, (err) => {
   if (err) return console.log('Ошибка запуска сервера.', err.message)
