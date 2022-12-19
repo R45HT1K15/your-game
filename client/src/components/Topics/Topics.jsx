@@ -19,10 +19,10 @@ export default function TopicList () {
 
     return (
         <div className="container-list">
-                <h3>*название темы*</h3>
+                <h2>*название темы*</h2>
             <div className="scoreAndButton">
                 <h4 className="scores">scores: 0</h4>
-                <button className="endOfTheGame">Завершить игру</button>
+                <button className="btnForAuth">Завершить игру</button>
             </div>
             <div>
                 {Array.isArray(topics) ? (
@@ -32,11 +32,11 @@ export default function TopicList () {
                                 <tbody>
                                     <tr>
                                     <th scope="row">{topic.name}</th>
-                                    <td><button className="open-modal" onClick={() => findQuestion(topic.Questions.find((el) => el.cost === 200))}>200</button></td>
-                                    <td><button className="open-modal" onClick={() => findQuestion(topic.Questions.find((el) => el.cost === 400))}>400</button></td>
-                                    <td><button className="open-modal" onClick={() => findQuestion(topic.Questions.find((el) => el.cost === 600))}>600</button></td>
-                                    <td><button className="open-modal" onClick={() => findQuestion(topic.Questions.find((el) => el.cost === 800))}>800</button></td>
-                                    <td><button className="open-modal" onClick={() => findQuestion(topic.Questions.find((el) => el.cost === 1000))}>1000</button></td>
+                                    <td><button className="open-modal" onClick={() => findQuestion(topic.Questions.find((el) => el.cost === 200))}><p className="points">200</p></button></td>
+                                    <td><button className="open-modal" onClick={() => findQuestion(topic.Questions.find((el) => el.cost === 400))}><p className="points">400</p></button></td>
+                                    <td><button className="open-modal" onClick={() => findQuestion(topic.Questions.find((el) => el.cost === 600))}><p className="points">600</p></button></td>
+                                    <td><button className="open-modal" onClick={() => findQuestion(topic.Questions.find((el) => el.cost === 800))}><p className="points">800</p></button></td>
+                                    <td><button className="open-modal" onClick={() => findQuestion(topic.Questions.find((el) => el.cost === 1000))}><p className="points">1000</p></button></td>
                                     </tr>
                                 </tbody>
                             </table>
