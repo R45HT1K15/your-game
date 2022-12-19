@@ -4,9 +4,76 @@
   box-sizing: border-box;
 }
 
-:root {
-  --color-bg: #2c2c32;
-  --color-active: #0f7dc6;
+
+html[data-theme='custom'] {
+  --text-color: black;
+  --background-color: white;
+  --border-color: black;
+  --main-bg-color: white;
+  --a-color: grey;
+  --table-hover-color: rgb(194, 194, 194);
+}
+
+html[data-theme='classic'] {
+  --text-color: yellow;
+  --background-color: blue;
+  --border-color: yellow;
+  --main-bg-color: #30a9fa;
+  --a-color: #9e9c16;
+  --table-hover-color: #131b86;
+}
+
+/*переключатель темы*/
+.switcher{
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.customTheme{
+  color: black;
+  background-color: white;
+  border-color: yellow;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.customTheme:hover, .classicTheme:hover{
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.classicTheme{
+  color: yellow;
+  background-color: blue;
+  border-color: yellow;
+  border-radius: 10px 0px 0px 10px;
+}
+
+/*навигационная панель*/
+
+.navbar-nav > a {
+  color: var(--a-color);
+}
+
+.active-link {
+  color: var(--text-color)!important;
+}
+
+.navbar-nav{
+  background-color: var(--background-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.container a {
+  color: var(--text-color);
+}
+
+h1, h2, h3, h4, h5, h6, span, p{
+  color: var(--text-color);
+}
+
+.container{
+  background-color: var(--main-bg-color);
+  transition: background-color 200ms linear
 }
 
 
@@ -53,18 +120,11 @@ a:not([class]) {
   text-decoration-skip-ink: auto;
 }
 
-/* Упрощаем работу с изображениями */
 img {
   max-width: 100%;
   display: block;
 }
 
-/* Указываем понятную периодичность в потоке данных у article*/
-article > * + * {
-  margin-top: 1em;
-}
-
-/* Наследуем шрифты для инпутов и кнопок */
 input,
 button,
 textarea,
@@ -72,23 +132,13 @@ select {
   font: inherit;
 }
 
-/* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
 .switcher{
   position: absolute;
   right: 50px;
 }
 
-.switcher:hover{
-  color:rgba(252, 173, 3, 0.6)
+#root{
+  height: 90vh;
 }
 
 body{
@@ -97,35 +147,92 @@ body{
 }
 
 .navbar-nav{
-  background-color: var(--color-bg);
   display: flex;
   justify-content: center;
   gap: 30px;
   flex-wrap: wrap;
-  height: 80px;
+  height: 10vh;
   align-items: center;
 }
 
 .navbar-nav > a {
-  color: white;
   text-decoration: none;
   padding: 0 1rem;
 }
 
-.navbar-nav > a:hover {
-  text-decoration: underline;
-}
-
 .container a {
   text-decoration: none;
-  color: var(--color-bg);
 }
 
 .container a:hover {
   text-decoration: underline;
 }
-
+.container{
+  height: 100%
+}
 .active-link {
-  color: var(--color-active)!important;
   cursor: default;
+}
+
+.container-list{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  left: 50%;
+  gap: 20px;
+}
+
+.list-group{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.list, .scoreAndButton{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 800px; 
+}
+
+.scoreAndButton{
+  display: flex;
+}
+
+.table{
+  min-width: 800px;
+  border-collapse: collapse;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+.table th{
+  border: 1px solid black;
+  min-width: 200px;
+}
+
+td>button {
+  width: 100%;
+  color: var(--text-color)
+}
+
+.table td {
+	border: 1px solid black;
+	padding: 0;
+}
+
+.open-modal{
+  background-color: var(--background-color);
+  border: 0;
+}
+
+.open-modal:hover, .endOfTheGame:hover{
+  background-color: var(--table-hover-color);
+  scale: 1.1;
+  transition: scale 100ms linear;
+}
+
+.endOfTheGame{
+  color: var(--text-color);
+  background-color: var(--background-color)
 }

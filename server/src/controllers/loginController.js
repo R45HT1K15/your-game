@@ -31,4 +31,4 @@ const logoutRend = (req, res, next) => {
         res.redirect('/');
     })
 };
-module.exports = { renderLogin, postLogin, logoutRend };
+module.exports = { postLogin, logoutRend };

@@ -25,6 +25,7 @@ const corsOptions = {
 
 const { SECRET, PORT } = process.env;
 
+
 app.use(cors(corsOptions));
 app.use(express.static(path.resolve('public')));
 app.use(morgan('dev'));

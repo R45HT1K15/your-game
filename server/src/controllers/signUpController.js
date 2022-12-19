@@ -15,4 +15,4 @@ const postSignUp = async (req, res) => {
     }
 }
 
-module.exports = { renderSignUp, postSignUp }
+module.exports = { postSignUp }

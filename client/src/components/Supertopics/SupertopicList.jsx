@@ -8,18 +8,19 @@ export default function SupertopicList () {
     return (
         <div className="container-list">
             <h3>Выбери тему</h3>
-            <ul className="list-group">
+            <div className="list-group">
                 {Array.isArray(supertopics) ? (
                     supertopics.map((supertopic) => (
-                        <>
-                            <Link to={`/game/${supertopic.title}`}>{supertopic.title}</Link>
-                        </>
+                        <div className="list">
+                            <h2>{supertopic.title}</h2>
+                            <Link to={`/game/${supertopic.title}`}>Начать игру</Link>
+                        </div>
                     ))
                 ) : (
                     supertopics
                 ) 
                 }
-            </ul>
+            </div>
         </div>
     )
 }

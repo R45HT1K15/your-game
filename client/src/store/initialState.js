@@ -18,16 +18,6 @@ export const initialState = {
                 title: 'Солянка',
                 score: -200
             },        
-            {
-                id: 4,
-                title: 'Программирование',
-                score: 0
-            },        
-            {
-                id: 5,
-                title: 'Мульты 2000-2010',
-                score: 0
-            },
         ]
     },
     supertopics: [
@@ -43,14 +33,6 @@ export const initialState = {
             id: 3,
             title: 'Солянка'
         },        
-        {
-            id: 4,
-            title: 'Программирование'
-        },        
-        {
-            id: 5,
-            title: 'Мульты 2000-2010'
-        },
     ],
     topics: [
         {

@@ -10,8 +10,12 @@ export default function TopicList () {
 
     return (
         <div className="container-list">
-            <h3>Выбери тему</h3>
-                <div className="scores">scores: 0</div>
+                <h3>*название темы*</h3>
+            <div className="scoreAndButton">
+                <h4 className="scores">scores: 0</h4>
+                <button className="endOfTheGame">Завершить игру</button>
+            </div>
+            <div>
                 {Array.isArray(topics) ? (
                     topics.map((topic) => (
                         <>
@@ -32,7 +36,8 @@ export default function TopicList () {
                 ) : (
                     topics
                 ) 
-                }
+            }
+            </div>
                 <Modal active={modalActive} setActive={setModalActive}/>
         </div>
     )
