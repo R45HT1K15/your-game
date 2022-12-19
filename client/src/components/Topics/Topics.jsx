@@ -43,7 +43,7 @@ export default function TopicList () {
                         </>
                     ))
                 ) : (
-                    topics
+                    'загрузка'
                 ) 
             }
             </div>

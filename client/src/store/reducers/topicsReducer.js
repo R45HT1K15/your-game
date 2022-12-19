@@ -2,18 +2,16 @@ import { initialState } from '../initialState';
 import * as types from '../types';
 
 export const topicsReducer = ( state = initialState, action ) => {
-    const { type, payload } = action;
+    const { type, topics } = action;
     switch (type) {
         case types.ADD_TOPICS:
-            return {
-                ...state,
-                supertopics: payload.topics,
-            }
             
+            return topics;
+
         case types.DEL_TOPICS:
             return {
                 ...state,
-                supertopics: [],
+                topics: '',
             }
 
         default:

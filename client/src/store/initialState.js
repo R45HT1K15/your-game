@@ -20,13 +20,8 @@ export const initialState = {
             },        
         ]
     },
-    supertopics: [
-        {
-            id: 0,
-            title: '',
-            topics: []
-        }
-    ],
+    supertopics: [],
+    topics: '',
     overallRating: [
         {
             user: 'Вася228',
