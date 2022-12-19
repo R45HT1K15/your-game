@@ -1,15 +1,31 @@
 const renderTemplate = require('../lib/renderReactModel');
 const TopicV = require('../views/Topic');
-const { Topic } = require('../../db/models');
+const { Topic, IsCorrect, Question } = require('../../db/models');
 
-const renderTopic = async (req, res) => {
+exports.renderTopic = async (req, res) => {
     try {
         const { user } = req.session;
-        const topic = await Topic.findAll({ where: { tema_id: req.params.id } });
-        renderTemplate(TopicV, { user, topic }, res);
+        const topics = await Topic.findAll({ where: { tema_id: req.params.name }, include: Question });
+        let isCorrect
+        topics.map((topic) => {
+            topic.Questions.map( async (quest) => {
+                isCorrect = await IsCorrect.findOrCreate({ where: { user_id: user.id, question_id: quest.id }, defaults: { status: true }})
+                return isCorrect
+            })
+        })
     } catch (error) {
         console.log(error);
     }
 }
 
-module.exports = { renderTopic };
+exports.updateStat = async (req, res) => {
+    try {
+        const { user } = req.session;
+        const { id } = req.body;
+        console.log('id', id)
+        const isCorrect = await IsCorrect.update({ status: false }, { where: { user_id: user.id, question_id: id }})
+        res.json(isCorrect)
+    } catch (error) {
+        console.log(error)
+    }
+}
