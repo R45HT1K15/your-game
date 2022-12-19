@@ -25,8 +25,15 @@ function App() {
         method: 'GET',
         credentials: 'include'
       })
+      const response = await fetch('http://localhost:3100/', {
+        method: 'GET',
+        credentials: 'include',
+      })
+      const supertopics = await response.json()
+      console.log('topics-----------', supertopics)
       const data = await res.json()
       dispatch({ type: types.ADD_PROFILE, payload: { id: data.id, name: data.name}})
+      dispatch({ type: types.ADD_SUPERTOPICS, supertopics})
     })()
   })
 

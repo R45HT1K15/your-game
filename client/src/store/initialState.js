@@ -22,49 +22,10 @@ export const initialState = {
     },
     supertopics: [
         {
-            id: 1,
-            title: 'Гарри Поттер'
-        },
-        {
-            id: 2,
-            title: 'Игры на комп'
-        },        
-        {
-            id: 3,
-            title: 'Солянка'
-        },        
-    ],
-    topics: [
-        {
-            tema_id: 1,
-            question:'abcd',
-            answer: 'abcd',
-        },
-        {
-            tema_id: 1,
-            question:'abcdwww',
-            answer: 'abcd',
-        },
-        {
-            tema_id: 1,
-            question:'abcddd',
-            answer: 'abcd',
-        },
-        {
-            tema_id: 1,
-            question:'abcddddd',
-            answer: 'abcd',
-        },
-        {
-            tema_id: 1,
-            question:'abcdddd',
-            answer: 'abcd',
-        },
-        {
-            tema_id: 1,
-            question:'abcdaaa',
-            answer: 'abcd',
-        },
+            id: 0,
+            title: '',
+            topics: []
+        }
     ],
     overallRating: [
         {

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 export default function SupertopicList () {
     
     const supertopics = useSelector((store) => store.supertopics)
+    console.log('supertopics', supertopics)
 
     return (
         <div className="container-list">

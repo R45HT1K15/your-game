@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-
+import { Link } from "react-router-dom";
 import { CustomLink } from '../castomLink/CastomLink'
 import * as types from '../../store/types';
 import { signout } from '../../functions/auth';
@@ -36,7 +36,7 @@ export default function Navbar() {
                             <CustomLink to='/'>Игры</CustomLink>
                             <CustomLink to={`/profile/${name}`}>{name}</CustomLink>
                             <CustomLink to='/raiting'>Общий рейтинг</CustomLink>
-                            <CustomLink to='#' onClick={handleSignout}>Выйти</CustomLink>
+                            <Link to='#' onClick={handleSignout}>Выйти</Link>
                             <div className='switcher'>
                             <button className="classicTheme" onClick={handleClassicThemeClick}>
                                 Classic
@@ -45,6 +45,7 @@ export default function Navbar() {
                                 Custom
                             </button>
                             </div>
+
                         </>
                     ) : (
                         <>

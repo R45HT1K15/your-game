@@ -1,12 +1,21 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Modal } from "../modal/Modal";
 
 export default function TopicList () {
-    
-    const topics = useSelector((store) => store.topics)
+
+    const params = useParams()
+    const topics = useSelector((store) => store.supertopics).filter((el) => el.tema === params.name)[0].Topics
+    console.log('topics', topics)
     const [modalActive, setModalActive] = useState(false)
+    const [question, setQuestion] = useState()
+
+
+    const findQuestion = (question) => {
+        setQuestion(question)
+        setModalActive(true)
+    }
 
     return (
         <div className="container-list">
@@ -22,12 +31,12 @@ export default function TopicList () {
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                    <th scope="row">{topic.question}</th>
-                                    <td><button className="open-modal" onClick={() => setModalActive(true)}>200</button></td>
-                                    <td><button className="open-modal" onClick={() => setModalActive(true)}>400</button></td>
-                                    <td><button className="open-modal" onClick={() => setModalActive(true)}>600</button></td>
-                                    <td><button className="open-modal" onClick={() => setModalActive(true)}>800</button></td>
-                                    <td><button className="open-modal" onClick={() => setModalActive(true)}>1000</button></td>
+                                    <th scope="row">{topic.name}</th>
+                                    <td><button className="open-modal" onClick={() => findQuestion(topic.Questions.find((el) => el.cost === 200))}>200</button></td>
+                                    <td><button className="open-modal" onClick={() => findQuestion(topic.Questions.find((el) => el.cost === 400))}>400</button></td>
+                                    <td><button className="open-modal" onClick={() => findQuestion(topic.Questions.find((el) => el.cost === 600))}>600</button></td>
+                                    <td><button className="open-modal" onClick={() => findQuestion(topic.Questions.find((el) => el.cost === 800))}>800</button></td>
+                                    <td><button className="open-modal" onClick={() => findQuestion(topic.Questions.find((el) => el.cost === 1000))}>1000</button></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -38,7 +47,7 @@ export default function TopicList () {
                 ) 
             }
             </div>
-                <Modal active={modalActive} setActive={setModalActive}/>
+                <Modal active={modalActive} setActive={setModalActive} question={question}/>
         </div>
     )
 }
