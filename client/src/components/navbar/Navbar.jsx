@@ -1,9 +1,9 @@
 import React from "react";
-import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
+
+import { CustomLink } from '../castomLink/CastomLink'
 import * as types from '../../store/types';
 import { signout } from '../../functions/auth';
-
 
 
 export default function Navbar() {
@@ -25,15 +25,17 @@ export default function Navbar() {
                 <div className="navbar-nav">
                     {name ? (
                         <>
-                            <Link to='/'>Игры</Link>
-                            <Link to={`/profile/${name}`}>{name}</Link>
-                            <Link className="nav-link" to='/raiting'>Общий рейтинг</Link>
-                            <Link className="nav-link" to='#' onClick={handleSignout}>Выйти</Link>
+                            <CustomLink to='/'>Игры</CustomLink>
+                            <CustomLink to={`/profile/${name}`}>{name}</CustomLink>
+                            <CustomLink to='/raiting'>Общий рейтинг</CustomLink>
+                            <CustomLink to='#' onClick={handleSignout}>Выйти</CustomLink>
+                            <button className='switcher' dark-mode='false' onClick='changeTheme(event);'>&#9788;</button>
                         </>
                     ) : (
                         <>
-                            <Link className="nav-link" to='/signin'>Войти</Link>
-                            <Link className="nav-link" to='/signup'>Зарегистрироваться</Link>
+                            <CustomLink to='/signin'>Войти</CustomLink>
+                            <CustomLink to='/signup'>Зарегистрироваться</CustomLink>
+                            <button className='switcher' dark-mode='false' onClick='changeTheme(event);'>&#9788;</button>
                         </>
                     )}
                 </div>
