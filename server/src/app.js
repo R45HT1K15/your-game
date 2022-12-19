@@ -23,6 +23,7 @@ const mainRouter = require('./routers/mainRouter');
 const signUpRouter = require('./routers/signUpRouter');
 const logInRouter = require('./routers/logInRouter');
 const logOutRouter = require('./routers/logOutRouter');
+const checkRouter = require('./routers/checkRouter')
 
 // ! подключаем сессию и файлсторадже для хранения куки в РЕАКТЕ
 const corsOptions = {
@@ -31,7 +32,6 @@ const corsOptions = {
 }
 const { SECRET } = process.env;
 
-app.use(cors());
 app.use(cors(corsOptions));
 app.use(express.static(path.resolve('public')));
 app.use(morgan('dev'));
@@ -43,7 +43,7 @@ app.use(express.json());
 const sessionConfig = {
   name: 'sid', 
   store: new FileStore({}), 
-  secret: SECRET, 
+  secret: SECRET || 'ee29adc3165fecb20efe', 
   resave: false, 
   saveUninitialized: false, 
   cookie: {
@@ -57,8 +57,9 @@ app.use(session(sessionConfig));
 
 app.use('/', mainRouter);
 app.use('/signup', signUpRouter);
-app.use('/login', logInRouter);
-app.use('/logout', logOutRouter)
+app.use('/signin', logInRouter);
+app.use('/signout', logOutRouter)
+app.use('/check', checkRouter)
 
 const PORT = process.env.PORT || 3100;
 app.listen(PORT, (err) => {

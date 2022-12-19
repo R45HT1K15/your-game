@@ -14,8 +14,8 @@ export const authReducer = ( state = initialState, action ) => {
         case types.DEL_PROFILE:
             return {
                 ...state,
-                id: 'id',
-                name: 'name',
+                id: 0,
+                name: '',
             }
 
         default:

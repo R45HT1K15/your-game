@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import * as types from '../../store/types';
-// import { signup } from "../hooks/auth";
+import { signup } from '../../functions/auth';
 import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
@@ -8,18 +8,17 @@ export default function Signup() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    // const handleCange = async (e) => {
-    //     e.preventDefault()
-    //     const name = e.target.name.value
-    //     const email = e.target.email.value
-    //     const password = e.target.password.value
-    //     const data = await signup(name, email, password)
-    //     dispatch({ type: types.ADD_NAME, payload: { name: data.name}})
-    //     navigate("/")
-    // }
+    const handleChange = async (e) => {
+        e.preventDefault()
+        const name = e.target.name.value
+        const password = e.target.password.value
+        const data = await signup(name, password)
+        dispatch({ type: types.ADD_PROFILE, payload: { id: data.id, name: data.name }})
+        navigate("/")
+    }
 
     return (
-      <form>
+      <form onSubmit={handleChange}>
       <div>
           <label>Ваше имя</label>
           <input name="name" type="text"/>
