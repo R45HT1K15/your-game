@@ -18,16 +18,19 @@ export default function Signup() {
     }
 
     return (
-      <form onSubmit={handleChange}>
-      <div>
-          <label>Ваше имя</label>
-          <input name="name" type="text"/>
-      </div>
-      <div>
-          <label>Пароль</label>
-          <input name="password" type="password"/>
-      </div>
-      <button type="submit">Зарегистрироваться</button>
-      </form>
+        <form onSubmit={handleChange}>
+            <div className='authForm'>
+                <h4>Регистрация</h4>
+                <div className="divForLogin">
+                    <label>Ваше имя</label>
+                    <input name="name" type="text"/>
+                </div>
+                <div className="divForPassword">
+                    <label>Пароль</label>
+                    <input name="password" type="password"/>
+                </div>
+                <button className="btnForAuth" type="submit">Зарегистрироваться</button>
+            </div>
+        </form>
       );
 }

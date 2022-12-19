@@ -8,7 +8,7 @@ export default function SupertopicList () {
 
     return (
         <div className="container-list">
-            <h3>Выбери тему</h3>
+            <h2>Выбери тему</h2>
             <div className="list-group">
                 {Array.isArray(supertopics) ? (
                     supertopics.map((supertopic) => (
