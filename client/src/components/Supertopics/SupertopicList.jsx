@@ -15,7 +15,7 @@ export default function SupertopicList () {
                     supertopics.map((supertopic) => (
                         <div className="list" key={supertopic.id}>
                             <h2>{supertopic.tema}</h2>
-                            <Link to={`/game/${supertopic.tema}`}><button className="btnForAuth" onClick={() => startGame(supertopic.id)}>Начать игру</button></Link>
+                            <Link to={`/game/${supertopic.tema}`}><button className="btnForAuth" onClick={() => startGame(supertopic.id, supertopic.tema)}>Начать игру</button></Link>
                         </div>
                     ))
                 ) : (

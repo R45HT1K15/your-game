@@ -17,6 +17,14 @@ function App() {
   const params = useParams()
   const dispatch = useDispatch()
   const [isLoading, setIsLoading] = useState(false)
+  const { name } = useSelector((store) => store.profile)
+
+  useEffect(() => {
+    setIsLoading(true)
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 1500)
+  }, [])
 
   useEffect(() => {
     (async () => {
@@ -34,23 +42,30 @@ function App() {
       dispatch({ type: types.ADD_SUPERTOPICS, supertopics})
       const topics = supertopics.find((el) => el.tema === params.name).Topics
       dispatch({ type: types.ADD_TOPICS, topics})
-      setIsLoading(false)
     })()
   }, [])
 
   return (
     <>
       <Navbar/>
-      <div className="container">
+      { name ? (
+        <div className="container">
+          <Routes>
+            <Route index element={isLoading ? <AppLoader/> : <SupertopicList/>}/>
+            <Route path="/game/:name" element={<TopicList/>}/>
+            <Route path="/signup" element={<Signup/>}/>
+            <Route path="/signin" element={<Signin/>}/>
+            <Route path="/profile/:name" element={<Profile/>}/>
+            <Route path="/raiting" element={<OverallRating/>}/>
+          </Routes>
+        </div>
+      ) : (
         <Routes>
-          <Route index element={isLoading ? <AppLoader/> : <SupertopicList/>}/>
-          <Route path="/game/:name" element={<TopicList/>}/>
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/signin" element={<Signin/>}/>
-          <Route path="/profile/:name" element={<Profile/>}/>
-          <Route path="/raiting" element={<OverallRating/>}/>
+        'пошел нахуй'
         </Routes>
-      </div>
+      ) }
     </>
 
   );

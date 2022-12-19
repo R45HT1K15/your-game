@@ -29,7 +29,7 @@ export default function Signup() {
                     <label>Пароль</label>
                     <input name="password" type="password"/>
                 </div>
-                <Button className="btnForAuth" type="submit">Зарегистрироваться</Button>
+                <button className="btnForAuth" type="submit">Зарегистрироваться</button>
             </div>
         </form>
       );
