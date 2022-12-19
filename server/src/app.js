@@ -16,14 +16,15 @@ const signUpRouter = require('./routers/signUpRouter');
 const logInRouter = require('./routers/logInRouter');
 const logOutRouter = require('./routers/logOutRouter');
 const topicRouter = require('./routers/topicRouter');
-const checkRouter = require('./routers/checkRouter')
+const checkRouter = require('./routers/checkRouter');
+const answerRouter = require('./routers/answerRouter');
 
 const corsOptions = {
   credentials: true,
   origin: 'http://localhost:3000'
 }
 
-const { COOKIE_SECRET, PORT } = process.env;
+const { SECRET, PORT } = process.env;
 
 app.use(cors(corsOptions));
 app.use(express.static(path.resolve('public')));
@@ -34,7 +35,7 @@ app.use(express.json());
 app.use(session({
   name: 'sid',
   store: new FileStore({}),
-  secret: COOKIE_SECRET,
+  secret: SECRET,
   resave: false,
   saveUninitialized: false,
   cookie: {
@@ -49,7 +50,8 @@ app.use('/game', topicRouter);
 app.use('/signup', signUpRouter);
 app.use('/signin', logInRouter);
 app.use('/signout', logOutRouter)
-app.use('/check', checkRouter)
+app.use('/check', checkRouter);
+app.use('/answer', answerRouter)
 
 app.listen(PORT, (err) => {
   if (err) return console.log('Ошибка запуска сервера.', err.message)
