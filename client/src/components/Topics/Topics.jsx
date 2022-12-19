@@ -16,7 +16,7 @@ export default function TopicList () {
 
     const findQuestion = (question) => {
         updateStatusQuest(question.id)
-        setQuestion(question)
+        setQuestion(params)
         setModalActive(true)
     }
 
@@ -44,15 +44,14 @@ export default function TopicList () {
                                 <tbody>
                                     <tr>
                                     <th scope="row">{topic.name}</th>
-                                    <td><button className="open-modal" onClick={() => findQuestion(topic.Questions.find((el) => el.cost === 200))} style={ topic.Questions.find((el) => el.cost === 200).IsCorrects[0].status ?  {pointerEvents: ""} : {pointerEvents: "none"} }><p className="points" style={ topic.Questions.find((el) => el.cost === 200).IsCorrects[0].status ?  {textDecorationLine: ""} : {textDecorationLine: "line-through"} } onClick={handleStyle}>200</p></button></td>
-                                    <td><button className="open-modal" onClick={() => findQuestion(topic.Questions.find((el) => el.cost === 400))} style={ topic.Questions.find((el) => el.cost === 400).IsCorrects[0].status ?  {pointerEvents: ""} : {pointerEvents: "none"} }><p className="points" style={ topic.Questions.find((el) => el.cost === 400).IsCorrects[0].status ?  { textDecorationLine: "" } : { textDecorationLine: "line-through"} } onClick={handleStyle}>400</p></button></td>
-                                    <td><button className="open-modal" onClick={() => findQuestion(topic.Questions.find((el) => el.cost === 600))} style={ topic.Questions.find((el) => el.cost === 600).IsCorrects[0].status ?  {pointerEvents: ""} : {pointerEvents: "none"} }><p className="points" style={ topic.Questions.find((el) => el.cost === 600).IsCorrects[0].status ?  { textDecorationLine: "" } : { textDecorationLine: "line-through"} } onClick={handleStyle}>600</p></button></td>
-                                    <td><button className="open-modal" onClick={() => findQuestion(topic.Questions.find((el) => el.cost === 800))} style={ topic.Questions.find((el) => el.cost === 800).IsCorrects[0].status ?  {pointerEvents: ""} : {pointerEvents: "none"} }><p className="points" style={ topic.Questions.find((el) => el.cost === 800).IsCorrects[0].status ?  { textDecorationLine: "" } : { textDecorationLine: "line-through"} } onClick={handleStyle}>800</p></button></td>
-                                    <td><button className="open-modal" onClick={() => findQuestion(topic.Questions.find((el) => el.cost === 1000))} style={ topic.Questions.find((el) => el.cost === 1000).IsCorrects[0].status ?  {pointerEvents: ""} : {pointerEvents: "none"} }><p className="points" style={ topic.Questions.find((el) => el.cost === 1000).IsCorrects[0].status ?  { textDecorationLine: "" } : { textDecorationLine: "line-through"} } onClick={handleStyle}>1000</p></button></td>
+                                    <td><button className="open-modal" onClick={() => findQuestion(topic.Questions.find((el) => el.cost === 200))} style={ topic.Questions.find((el) => el.cost === 200).IsCorrects[0]?.status ?  {pointerEvents: ""} : {pointerEvents: "none"} }><p className="points" style={ topic.Questions.find((el) => el.cost === 200).IsCorrects[0]?.status ?  {textDecorationLine: ""} : {textDecorationLine: "line-through"} } onClick={handleStyle}>200</p></button></td>
+                                    <td><button className="open-modal" onClick={() => findQuestion(topic.Questions.find((el) => el.cost === 400))} style={ topic.Questions.find((el) => el.cost === 400).IsCorrects[0]?.status ?  {pointerEvents: ""} : {pointerEvents: "none"} }><p className="points" style={ topic.Questions.find((el) => el.cost === 400).IsCorrects[0]?.status ?  { textDecorationLine: "" } : { textDecorationLine: "line-through"} } onClick={handleStyle}>400</p></button></td>
+                                    <td><button className="open-modal" onClick={() => findQuestion(topic.Questions.find((el) => el.cost === 600))} style={ topic.Questions.find((el) => el.cost === 600).IsCorrects[0]?.status ?  {pointerEvents: ""} : {pointerEvents: "none"} }><p className="points" style={ topic.Questions.find((el) => el.cost === 600).IsCorrects[0]?.status ?  { textDecorationLine: "" } : { textDecorationLine: "line-through"} } onClick={handleStyle}>600</p></button></td>
+                                    <td><button className="open-modal" onClick={() => findQuestion(topic.Questions.find((el) => el.cost === 800))} style={ topic.Questions.find((el) => el.cost === 800).IsCorrects[0]?.status ?  {pointerEvents: ""} : {pointerEvents: "none"} }><p className="points" style={ topic.Questions.find((el) => el.cost === 800).IsCorrects[0]?.status ?  { textDecorationLine: "" } : { textDecorationLine: "line-through"} } onClick={handleStyle}>800</p></button></td>
+                                    <td><button className="open-modal" onClick={() => findQuestion(topic.Questions.find((el) => el.cost === 1000))} style={ topic.Questions.find((el) => el.cost === 1000).IsCorrects[0]?.status ?  {pointerEvents: ""} : {pointerEvents: "none"} }><p className="points" style={ topic.Questions.find((el) => el.cost === 1000).IsCorrects[0]?.status ?  { textDecorationLine: "" } : { textDecorationLine: "line-through"} } onClick={handleStyle}>1000</p></button></td>
                                     </tr>
                                 </tbody>
                             </table>
-
                     ))
                 ) : (
                     'загрузка'

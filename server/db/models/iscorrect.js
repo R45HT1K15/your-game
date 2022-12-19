@@ -12,7 +12,8 @@ module.exports = (sequelize, DataTypes) => {
   IsCorrect.init({
     user_id: DataTypes.INTEGER,
     question_id: DataTypes.INTEGER,
-    status: DataTypes.BOOLEAN
+    status: DataTypes.BOOLEAN,
+    tema: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'IsCorrect',

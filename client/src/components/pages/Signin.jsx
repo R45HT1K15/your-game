@@ -32,7 +32,7 @@ export default function Signin() {
                 <label>Пароль</label>
                 <input name="password" type="password"/>
             </div>
-            <Button className="btnForAuth" type="submit">Войти</Button>
+            <button className="btnForAuth" type="submit">Войти</button>
         </div>
         </form>
       );
