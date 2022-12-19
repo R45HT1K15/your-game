@@ -13,8 +13,8 @@ export default function OverallRating () {
                     rating.map((el) => (
                         <li>
                             <div className="rate">
-                                <p>{el.user}</p>
-                                <p>{el.score}</p>
+                                <h3>{el.user}</h3>
+                                <h3>{el.score}</h3>
                             </div>
                         </li>
                     ))
