@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { Modal } from "../modal/Modal";
-
+import Button from '../button/Button'
 export default function TopicList () {
 
     const params = useParams()
@@ -22,7 +22,7 @@ export default function TopicList () {
                 <h2>{params.name}</h2>
             <div className="scoreAndButton">
                 <h4 className="scores">scores: 0</h4>
-                <button className="btnForAuth">Завершить игру</button>
+                <Button className="btnForAuth">Завершить игру</Button>
             </div>
             <div>
                 {Array.isArray(topics) ? (

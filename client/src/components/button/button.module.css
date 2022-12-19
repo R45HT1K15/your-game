@@ -1,0 +1,8 @@
+.btnForAuth{
+  max-width: 350px;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  transition: background-color 300ms linear;
+  border-color: var(--border-color);
+  border-radius: 20px;
+}

@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import * as types from '../../store/types';
 import { signup } from '../../functions/auth';
 import { useNavigate } from "react-router-dom";
-
+import Button from '../button/Button'
 export default function Signup() {
 
     const dispatch = useDispatch()
@@ -29,7 +29,7 @@ export default function Signup() {
                     <label>Пароль</label>
                     <input name="password" type="password"/>
                 </div>
-                <button className="btnForAuth" type="submit">Зарегистрироваться</button>
+                <Button className="btnForAuth" type="submit">Зарегистрироваться</Button>
             </div>
         </form>
       );
