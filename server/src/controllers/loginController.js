@@ -1,15 +1,5 @@
-const renderTemplate = require('../lib/renderReactModel');
-const Login = require('../views/Login');
 const { User } = require("../../db/models")
 const bcrypt = require('bcrypt');
-
-const renderLogin = (req, res) => {
-    try {
-        renderTemplate(Login, null, res);
-    } catch (err) {
-        console.log(err);
-    }
-}
 
 const postLogin = async (req, res) => {
     const { name, password } = req.body;
