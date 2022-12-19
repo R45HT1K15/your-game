@@ -1,8 +1,9 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+
 import { CustomLink } from '../castomLink/CastomLink'
-// import * as types from '../store/types';
-// import { signout } from "../hooks/auth";
+import * as types from '../../store/types';
+import { signout } from '../../functions/auth';
 
 
 export default function Navbar() {
@@ -10,12 +11,12 @@ export default function Navbar() {
     const dispatch = useDispatch()
     const { name } = useSelector((store) => store.profile)
    
-    // const handleSignout = async (e) => {
-    //     e.preventDefault()
-    //     const res = await signout()
-    //     dispatch({ type: types.DEL_NAME })
-    //     dispatch({ type: types.DEL_TASK })
-    // }
+    const handleSignout = async (e) => {
+        e.preventDefault()
+        const res = await signout()
+        dispatch({ type: types.DEL_PROFILE })
+        // dispatch({ type: types.DEL_TASK })
+    }
 
 
     return (
@@ -27,7 +28,7 @@ export default function Navbar() {
                             <CustomLink to='/'>Игры</CustomLink>
                             <CustomLink to={`/profile/${name}`}>{name}</CustomLink>
                             <CustomLink to='/raiting'>Общий рейтинг</CustomLink>
-                            <CustomLink to='#'>Выйти</CustomLink>
+                            <CustomLink to='#' onClick={handleSignout}>Выйти</CustomLink>
                             <button className='switcher' dark-mode='false' onClick='changeTheme(event);'>&#9788;</button>
                         </>
                     ) : (

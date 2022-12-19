@@ -1,15 +1,15 @@
 const React = require('react');
 const Layout = require('./Layout')
 
-module.exports = function Main({ user, mainTopics }) {
+module.exports = function Topic({ user, topic }) {
     return (
         <Layout user={user}>
             {user ?
                 (
                     <>
-                        {mainTopics.map((el) => (
+                        {topic.map((el) => (
                             <div>
-                                <h1>{el.tema}</h1>
+                                <h1>{el.name}</h1>
                                 <a href={`/game/${el.id}`} className="btn btn-dark">Dark</a>
                             </div>
                         ))}
