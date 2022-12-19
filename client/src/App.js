@@ -1,5 +1,5 @@
 import AppLoader from "./components/loader/Loader";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as types from './store/types'
 import Signup from "./components/pages/Signup";
@@ -14,8 +14,7 @@ import OverallRating from "./components/pages/OverallRating";
 
 function App() {
 
-  
-
+  const params = useParams()
   const dispatch = useDispatch()
   const [isLoading, setIsLoading] = useState(false)
 
@@ -30,12 +29,14 @@ function App() {
         credentials: 'include',
       })
       const supertopics = await response.json()
-      console.log('topics-----------', supertopics)
       const data = await res.json()
       dispatch({ type: types.ADD_PROFILE, payload: { id: data.id, name: data.name}})
       dispatch({ type: types.ADD_SUPERTOPICS, supertopics})
+      const topics = supertopics.find((el) => el.tema === params.name).Topics
+      dispatch({ type: types.ADD_TOPICS, topics})
+      setIsLoading(false)
     })()
-  })
+  }, [])
 
   return (
     <>

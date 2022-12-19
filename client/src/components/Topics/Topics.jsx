@@ -19,7 +19,7 @@ export default function TopicList () {
 
     return (
         <div className="container-list">
-                <h2>*название темы*</h2>
+                <h2>{params.name}</h2>
             <div className="scoreAndButton">
                 <h4 className="scores">scores: 0</h4>
                 <button className="btnForAuth">Завершить игру</button>
@@ -27,8 +27,8 @@ export default function TopicList () {
             <div>
                 {Array.isArray(topics) ? (
                     topics.map((topic) => (
-                        <>
-                            <table class="table">
+
+                            <table className="table" key={topic.id}>
                                 <tbody>
                                     <tr>
                                     <th scope="row">{topic.name}</th>
@@ -40,10 +40,10 @@ export default function TopicList () {
                                     </tr>
                                 </tbody>
                             </table>
-                        </>
+
                     ))
                 ) : (
-                    topics
+                    'загрузка'
                 ) 
             }
             </div>
