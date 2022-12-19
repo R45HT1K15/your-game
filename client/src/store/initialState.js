@@ -21,7 +21,7 @@ export const initialState = {
         ]
     },
     supertopics: [],
-    topics: '',
+    topics: [],
     overallRating: [
         {
             user: 'Вася228',
