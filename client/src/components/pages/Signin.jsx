@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import * as types from '../../store/types';
 import { signin } from '../../functions/auth';
 import { useNavigate } from "react-router-dom";
-
+import Button from '../button/Button'
 export default function Signin() {
 
     const dispatch = useDispatch()
@@ -32,7 +32,7 @@ export default function Signin() {
                 <label>Пароль</label>
                 <input name="password" type="password"/>
             </div>
-            <button className="btnForAuth" type="submit">Войти</button>
+            <Button className="btnForAuth" type="submit">Войти</Button>
         </div>
         </form>
       );
