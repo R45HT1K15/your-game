@@ -13,8 +13,8 @@ export default function SupertopicList () {
                 {Array.isArray(supertopics) ? (
                     supertopics.map((supertopic) => (
                         <div className="list">
-                            <h2>{supertopic.title}</h2>
-                            <Link to={`/game/${supertopic.title}`}>Начать игру</Link>
+                            <h2>{supertopic.tema}</h2>
+                            <Link to={`/game/${supertopic.tema}`}>Начать игру</Link>
                         </div>
                     ))
                 ) : (
