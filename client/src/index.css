@@ -52,28 +52,33 @@ html[data-theme='classic'] {
 
 .navbar-nav > a {
   color: var(--a-color);
+  transition: color 300ms linear
 }
 
 .active-link {
   color: var(--text-color)!important;
+  transition: color 300ms linear
 }
 
 .navbar-nav{
   background-color: var(--background-color);
   border-bottom: 1px solid var(--border-color);
+  transition: background-color 300ms linear
 }
 
 .container a {
   color: var(--text-color);
+  transition: color 300ms linear
 }
 
 h1, h2, h3, h4, h5, h6, span, p{
   color: var(--text-color);
+  transition: color 300ms linear
 }
 
 .container{
   background-color: var(--main-bg-color);
-  transition: background-color 200ms linear
+  transition: background-color 300ms linear
 }
 
 
@@ -204,16 +209,20 @@ body{
   border-collapse: collapse;
   color: var(--text-color);
   background-color: var(--background-color);
+  transition: background-color 300ms linear;
+  
 }
 
 .table th{
   border: 1px solid black;
-  min-width: 200px;
+  width: 250px;
+  height: 100px;
 }
 
 td>button {
   width: 100%;
-  color: var(--text-color)
+  color: var(--text-color);
+  transition: color 300ms linear
 }
 
 .table td {
@@ -224,15 +233,29 @@ td>button {
 .open-modal{
   background-color: var(--background-color);
   border: 0;
+  transition: background-color 300ms linear
 }
 
 .open-modal:hover, .endOfTheGame:hover{
   background-color: var(--table-hover-color);
   scale: 1.1;
   transition: scale 100ms linear;
+  transition: background-color 300ms linear
 }
 
 .endOfTheGame{
   color: var(--text-color);
-  background-color: var(--background-color)
+  background-color: var(--background-color);
+  transition: background-color 300ms linear
+}
+
+.rate{
+  display: flex;
+  min-width: 500px;
+  justify-content: space-between;
+}
+
+li{
+  color: var(--text-color);
+  transition: color 300ms linear
 }
