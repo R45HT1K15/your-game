@@ -13,6 +13,7 @@ const renderLogin = (req, res) => {
 
 const postLogin = async (req, res) => {
     const { name, password } = req.body;
+    console.log('name, password', name, password)
     try {
         const user = await User.findOne({ where: { name } });
         const isAuth = await bcrypt.compare(password, user.password);
@@ -20,7 +21,7 @@ const postLogin = async (req, res) => {
             if (isAuth) {
                 req.session.user = user;
                 req.session.save(() => {
-                    res.redirect('/');
+                    res.json(req.session.user)
                 });
             } else {
                 res.send('Неверный логин или пароль')

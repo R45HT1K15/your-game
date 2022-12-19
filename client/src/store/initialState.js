@@ -1,7 +1,7 @@
 export const initialState = {
     profile: {
-        id: 'id',
-        name: 'Petya',
+        id: 0,
+        name: '',
         rating: [
             {
                 id: 1,

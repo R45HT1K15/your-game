@@ -12,14 +12,13 @@ const renderSignUp = (req, res) => {
 }
 
 const postSignUp = async (req, res) => {
-    console.log(123);
-    console.log(req.body);
     const { name, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
     try {
         const user = await User.create({ name, password: hashedPassword });
+        req.session.user = { id: user.id, name: user.name}
         req.session.save(() => {
-            res.redirect('/')
+            res.json(req.session.user)
         });
     } catch (err) {
         console.log(err);
