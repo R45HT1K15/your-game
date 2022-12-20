@@ -297,3 +297,21 @@ li{
   border-color: var(--border-color);
   border-radius: 20px;
 }
+
+.mainPage{
+  margin-left: 50%;
+  transform: translate(-50%);
+  text-align: center;
+  height: 300px;
+  width: 700px;
+}
+
+.mainTitle{
+  color: var(--text-color);
+  top: 30%;
+}
+
+.mainText{
+  margin-top: 50px;
+  color: var(--text-color);
+}

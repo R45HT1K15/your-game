@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import TopicList from "./components/Topics/Topics";
 import Profile from "./components/pages/Profile";
 import OverallRating from "./components/pages/OverallRating";
-
+import MainPage from './components/mainPage/MainPage'
 
 function App() {
 
@@ -60,11 +60,13 @@ function App() {
           </Routes>
         </div>
       ) : (
+        <div className="container">
         <Routes>
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/signin" element={<Signin/>}/>
-        'пошел нахуй'
-        </Routes>
+          <Route path="/" element={<MainPage/>}/>
+        </Routes>  
+        </div>
       ) }
     </>
 
