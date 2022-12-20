@@ -82,7 +82,7 @@ export default function TopicList () {
                 ) 
             }
             </div>
-                <Modal active={modalActive} setActive={setModalActive} question={question}/>
+                {modalActive&& (<Modal active={modalActive} setActive={setModalActive} question={question}/>)}
         </div>
     )
 }

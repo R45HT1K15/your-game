@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './modal.css'
 import { answerCheck } from '../../functions/answer';
 import { useSelector, useDispatch } from "react-redux";
@@ -10,6 +10,8 @@ export function Modal ({ active, setActive, question = '' }) {
     const dispatch = useDispatch()
     
     const [value, setValue] = useState('')
+    
+    const [time, setTime] = useState(3)
 
     const handleChange = async (e) => {
         e.preventDefault()
@@ -19,12 +21,21 @@ export function Modal ({ active, setActive, question = '' }) {
         setValue('')
         dispatch({type:types.ADD_SCORES, payload: { scores:data }})
     }
+
+    useEffect(() => {
+        setInterval(()=> {
+            setTime(( pretime )=> {
+                return pretime>=1 ? pretime - 1: setActive(false)
+            })
+        }, 1000)
+    }, [setActive])
+    
     return (
         <div className={active ? "modal active" : "modal"} onClick={() => setActive(false)}>
             <div onClick={(e) => e.stopPropagation()}>
                 <form  className="modal__content" onSubmit={handleChange}>
                     <div className="timer">
-                        25
+                        {time}
                     </div>
                     <div className='question'>
                         <label>{question.question}</label>
