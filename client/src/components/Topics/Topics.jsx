@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { Modal } from "../modal/Modal";
@@ -23,8 +23,16 @@ export default function TopicList () {
         console.log('question', question)
         updateStatusQuest(question.id)
         setQuestion(question)
-        setModalActive(true)
+        modalOpen()
+        // setModalActive(true)
     }
+
+    const modalOpen = useCallback(() => {
+        setModalActive(true)
+        setTimeout(() => {
+            setModalActive(false)
+        }, 25000)
+    }, [])
 
     const handleStyle = (event) => {
         console.log('event', event)

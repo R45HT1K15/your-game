@@ -22,9 +22,15 @@ export default function Navbar() {
    
     const handleSignout = async (e) => {
         e.preventDefault()
-        const res = await signout()
-        dispatch({ type: types.DEL_PROFILE })
-        navigate('/')
+        try {
+            console.log('********************************************')
+            const res = await signout()
+            console.log('********************************************')
+            dispatch({ type: types.DEL_PROFILE })
+            navigate('/')
+        } catch (error) {
+            console.log('ERROR', error)
+        }
         // dispatch({ type: types.DEL_TASK })
     }
     

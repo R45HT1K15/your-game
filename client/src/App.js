@@ -19,6 +19,7 @@ function App() {
   const dispatch = useDispatch()
   const [isLoading, setIsLoading] = useState(false)
   const { name } = useSelector((store) => store.profile)
+  console.log('name', name)
 
   useEffect(() => {
     setIsLoading(true)
@@ -33,18 +34,18 @@ function App() {
         method: 'GET',
         credentials: 'include'
       })
-      const response = await fetch('http://localhost:3100/', {
-        method: 'GET',
-        credentials: 'include',
-      })
-      const supertopics = await response.json()
+      // const response = await fetch('http://localhost:3100/', {
+      //   method: 'GET',
+      //   credentials: 'include',
+      // })
+      // const supertopics = await response.json()
       const data = await res.json()
       dispatch({ type: types.ADD_PROFILE, payload: { id: data.user.id, name: data.user.name, rating: data.statistic}})
-      dispatch({ type: types.ADD_SUPERTOPICS, supertopics})
-      const topics = supertopics.find((el) => el.tema === params.name).Topics
-      dispatch({ type: types.ADD_TOPICS, topics})
+      // dispatch({ type: types.ADD_SUPERTOPICS, supertopics})
+      // const topics = supertopics.find((el) => el.tema === params.name).Topics
+      // dispatch({ type: types.ADD_TOPICS, topics})
     })()
-  }, [name])
+  }, [])
 
   return (
     <>

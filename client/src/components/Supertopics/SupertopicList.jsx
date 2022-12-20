@@ -1,11 +1,26 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { startGame } from "../../functions/game";
+import * as types from '../../store/types'
 
 
 export default function SupertopicList () {
     
     const supertopics = useSelector((store) => store.supertopics)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        ( async () => {
+            const response = await fetch('http://localhost:3100/', {
+                method: 'GET',
+                credentials: 'include',
+              })
+            const supertopics = await response.json()
+            dispatch({ type: types.ADD_SUPERTOPICS, supertopics})
+
+        })()
+    },[])
 
     return (
         <div className="container-list">
