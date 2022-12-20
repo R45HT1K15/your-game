@@ -17,13 +17,10 @@ export async function signup (name, password) {
 
 export async function signout () {
     try {
-        const response = await fetch('http://localhost:3100/signout',{
-            method: 'GET',
+        await fetch('http://localhost:3100/signout',{
+            method: 'DELETE',
             credentials: 'include',
         })
-        const data = await response.json()
-        console.log('data', data)
-        return data
     } catch (error) {
         console.log(error)
     }
