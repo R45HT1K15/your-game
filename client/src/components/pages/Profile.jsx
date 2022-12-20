@@ -12,7 +12,7 @@ export default function Profile () {
                     rating.map((el) => (
                         <li>
                             <div className="rate">
-                                <h3>{el.title}</h3>
+                                <h3>{el.tema}</h3>
                                 <h3>{el.score}</h3>
                             </div>
                         </li>

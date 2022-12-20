@@ -1,6 +1,6 @@
 const renderTemplate = require('../lib/renderReactModel');
 const Main = require("../views/Main");
-const { SuperTopic, Topic, Question, IsCorrect, User } = require('../../db/models');
+const { SuperTopic, Topic, Question, IsCorrect, User, Stat } = require('../../db/models');
 
 const renderMain = async (req, res) => {
     try {
