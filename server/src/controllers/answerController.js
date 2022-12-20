@@ -9,7 +9,7 @@ exports.answerCheck = async (req, res) => {
         console.log('question', question)
         const topic = await Topic.findOne({ where: { id: question.topic_id } })
         // console.log('question', question)
-        const datat = 1;
+        
         let scores
         if (question.answer.toLowerCase() === answer.toLowerCase()) {
             const stat = await Stat.findOne({ where: { user_id: user.id, tema_id: topic.tema_id }})
@@ -22,7 +22,7 @@ exports.answerCheck = async (req, res) => {
             console.log('scores', scores)
             const updateStat = await Stat.update({ scores: scores }, {where: { user_id: user.id, tema_id: topic.tema_id } })
         }
-        res.json(datat)
+        res.json(scores)
 
     } catch (err) {
         console.log(err);

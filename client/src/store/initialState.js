@@ -5,7 +5,7 @@ export const initialState = {
         rating: []
     },
     supertopics: [],
-    topics: [],
+    scores: 0,
     overallRating: [
         {
             user: 'Вася228',
