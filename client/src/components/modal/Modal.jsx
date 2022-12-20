@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import './modal.css'
 import { answerCheck } from '../../functions/answer';
 import { useSelector, useDispatch } from "react-redux";
+import * as types from '../../store/types'
 
 
 export function Modal ({ active, setActive, question = '' }) {
@@ -15,6 +16,7 @@ export function Modal ({ active, setActive, question = '' }) {
         const data = await answerCheck(answer, question.id)
         console.log('data', data)
         setActive(false)
+        dispatch({type:types.ADD_SCORES, payload: { scores:data }})
         // e.target.offsetParent.className = "modal"
         // dispatch({ type: types.ADD_PROFILE, payload: { id: data.id, name: data.name }})
     }

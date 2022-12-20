@@ -9,6 +9,8 @@ export default function TopicList () {
 
     const params = useParams()
     const topics = useSelector((store) => store.supertopics).filter((el) => el.tema === params.name)[0]?.Topics
+    const scores = useSelector((store) => store.scores)
+    console.log('цаыыаыпып', scores);
     const [modalActive, setModalActive] = useState(false)
     const [question, setQuestion] = useState()
     const [styleStat, setStyleStat] = useState(true)
@@ -34,7 +36,7 @@ export default function TopicList () {
         <div className="container-list">
                 <h2>{params.name}</h2>
             <div className="scoreAndButton">
-                <h4 className="scores">scores: 0</h4>
+                <h4 className="scores">scores:{scores.scores}</h4>
                 <Link to="/">Вернуться на главную</Link>
                 <Button className="btnForAuth">Обнулить</Button>
             </div>
