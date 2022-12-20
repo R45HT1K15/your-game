@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CustomLink } from '../castomLink/CastomLink'
 import * as types from '../../store/types';
 import { signout } from '../../functions/auth';
@@ -17,12 +17,14 @@ export default function Navbar() {
         setTheme('custom')
     }
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const { name } = useSelector((store) => store.profile)
    
     const handleSignout = async (e) => {
         e.preventDefault()
         const res = await signout()
         dispatch({ type: types.DEL_PROFILE })
+        navigate('/')
         // dispatch({ type: types.DEL_TASK })
     }
     
@@ -36,7 +38,7 @@ export default function Navbar() {
                             <CustomLink to='/'>Игры</CustomLink>
                             <CustomLink to={`/profile/${name}`}>{name}</CustomLink>
                             <CustomLink to='/raiting'>Общий рейтинг</CustomLink>
-                            <Link to='/siGame' onClick={handleSignout}>Выйти</Link>
+                            <Link to='#' onClick={handleSignout}>Выйти</Link>
                             <div className='switcher'>
                             <button className="classicTheme" onClick={handleClassicThemeClick}>
                                 Classic

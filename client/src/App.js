@@ -39,13 +39,12 @@ function App() {
       })
       const supertopics = await response.json()
       const data = await res.json()
-      console.log('data', data)
       dispatch({ type: types.ADD_PROFILE, payload: { id: data.user.id, name: data.user.name, rating: data.statistic}})
       dispatch({ type: types.ADD_SUPERTOPICS, supertopics})
       const topics = supertopics.find((el) => el.tema === params.name).Topics
       dispatch({ type: types.ADD_TOPICS, topics})
     })()
-  }, [])
+  }, [name])
 
   return (
     <>
