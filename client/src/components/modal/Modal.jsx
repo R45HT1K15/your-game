@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import './modal.css'
 import { answerCheck } from '../../functions/answer';
 import { useSelector, useDispatch } from "react-redux";
@@ -8,12 +8,14 @@ export function Modal ({ active, setActive, question = '' }) {
 
     const dispatch = useDispatch()
 
-
     const handleChange = async (e) => {
         e.preventDefault()
+        console.log('e.target', e.target.offsetParent)
         const answer = e.target.answer.value
         const data = await answerCheck(answer, question.id)
         console.log('data', data)
+        setActive(false)
+        // e.target.offsetParent.className = "modal"
         // dispatch({ type: types.ADD_PROFILE, payload: { id: data.id, name: data.name }})
     }
     return (

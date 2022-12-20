@@ -15,8 +15,9 @@ export default function TopicList () {
 
 
     const findQuestion = (question) => {
+        console.log('question', question)
         updateStatusQuest(question.id)
-        setQuestion(params)
+        setQuestion(question)
         setModalActive(true)
     }
 
@@ -34,7 +35,8 @@ export default function TopicList () {
                 <h2>{params.name}</h2>
             <div className="scoreAndButton">
                 <h4 className="scores">scores: 0</h4>
-                <Button className="btnForAuth">Завершить игру</Button>
+                <Link to="/">Вернуться на главную</Link>
+                <Button className="btnForAuth">Обнулить</Button>
             </div>
             <div>
                 {Array.isArray(topics) ? (

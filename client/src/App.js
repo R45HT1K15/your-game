@@ -48,8 +48,8 @@ function App() {
   return (
     <>
       <Navbar/>
-      { name ? (
         <div className="container">
+      { name ? (
           <Routes>
             <Route index element={isLoading ? <AppLoader/> : <SupertopicList/>}/>
             <Route path="/game/:name" element={<TopicList/>}/>
@@ -58,14 +58,13 @@ function App() {
             <Route path="/profile/:name" element={<Profile/>}/>
             <Route path="/raiting" element={<OverallRating/>}/>
           </Routes>
-        </div>
       ) : (
         <Routes>
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/signin" element={<Signin/>}/>
-        'пошел нахуй'
         </Routes>
       ) }
+        </div>
     </>
 
   );
