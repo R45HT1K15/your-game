@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import TopicList from "./components/Topics/Topics";
 import Profile from "./components/pages/Profile";
 import OverallRating from "./components/pages/OverallRating";
-
+import MainPage from './components/mainPage/MainPage'
 
 function App() {
 
@@ -59,10 +59,13 @@ function App() {
             <Route path="/raiting" element={<OverallRating/>}/>
           </Routes>
       ) : (
+        <div className="container">
         <Routes>
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/signin" element={<Signin/>}/>
-        </Routes>
+          <Route path="/" element={<MainPage/>}/>
+        </Routes>  
+        </div>
       ) }
         </div>
     </>
