@@ -1,20 +1,23 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { Modal } from "../modal/Modal";
 import { updateStatusQuest } from "../../functions/game"
 import Button from '../button/Button'
+import * as types from '../../store/types'
 
 export default function TopicList () {
 
+    const dispatch = useDispatch()
     const params = useParams()
     const topics = useSelector((store) => store.supertopics).filter((el) => el.tema === params.name)[0]?.Topics
+    console.log('topics', topics)
     const scores = useSelector((store) => store.scores)
-    console.log('цаыыаыпып', scores);
     const [modalActive, setModalActive] = useState(false)
     const [question, setQuestion] = useState()
     const [styleStat, setStyleStat] = useState(true)
 
+    
 
     const findQuestion = (question) => {
         console.log('question', question)
@@ -32,11 +35,28 @@ export default function TopicList () {
 
     }
 
+    useEffect(() => {
+        ( async () => {
+            await Promise.all(topics)
+            const id = topics[0]?.tema_id
+            const response = await fetch('http://localhost:3100/answer/check', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                },
+                credentials: "include",
+                body: JSON.stringify({ id })
+            });
+            const data = await response.json()
+            dispatch({type:types.ADD_SCORES, payload: { scores:data }})
+        })()
+    }, [])
+
     return (
         <div className="container-list">
                 <h2>{params.name}</h2>
             <div className="scoreAndButton">
-                <h4 className="scores">scores:{scores.scores}</h4>
+                <h4 className="scores">scores: {scores.scores}</h4>
                 <Link to="/">Вернуться на главную</Link>
                 <Button className="btnForAuth">Обнулить</Button>
             </div>

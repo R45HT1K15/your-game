@@ -6,15 +6,17 @@ const renderMain = async (req, res) => {
     try {
         
         const { user } = req.session;
-        const userdb = await User.findOne({ where: { id: user.id } })
-        let mainTopics
-        if(userdb) {
-            mainTopics = await SuperTopic.findAll({ include: { model: Topic, include: { model: Question, include: { model: IsCorrect, where: { user_id: user.id } } } }, order: [["id"]] });
-        } else {
-            mainTopics = await SuperTopic.findAll({ include: { model: Topic, include: { model: Question, include: { model: IsCorrect, where: { user_id: 1 } } } } });
+        if(user) {
+            const userdb = await User.findOne({ where: { id: user.id } })
+            let mainTopics
+            if(userdb) {
+                mainTopics = await SuperTopic.findAll({ include: { model: Topic, include: { model: Question, include: { model: IsCorrect, where: { user_id: user.id } } } }, order: [["id"]] });
+            } else {
+                mainTopics = await SuperTopic.findAll({ include: { model: Topic, include: { model: Question, include: { model: IsCorrect, where: { user_id: 1 } } } } });
+            }
+            // renderTemplate(Main, { user, mainTopics }, res);
+            res.json(mainTopics)
         }
-        // renderTemplate(Main, { user, mainTopics }, res);
-        res.json(mainTopics)
     } catch (error) {
         console.log(error);
     }
