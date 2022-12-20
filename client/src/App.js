@@ -11,6 +11,7 @@ import TopicList from "./components/Topics/Topics";
 import Profile from "./components/pages/Profile";
 import OverallRating from "./components/pages/OverallRating";
 import MainPage from './components/mainPage/MainPage'
+import ErrorPage from './components/error/ErrorPage'
 
 function App() {
 
@@ -54,10 +55,9 @@ function App() {
           <Routes>
             <Route index element={isLoading ? <AppLoader/> : <SupertopicList/>}/>
             <Route path="/game/:name" element={<TopicList/>}/>
-            <Route path="/signup" element={<Signup/>}/>
-            <Route path="/signin" element={<Signin/>}/>
             <Route path="/profile/:name" element={<Profile/>}/>
             <Route path="/raiting" element={<OverallRating/>}/>
+            <Route path='*' element={<ErrorPage/>}/>
           </Routes>
       ) : (
         <div className="container">
@@ -65,6 +65,7 @@ function App() {
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/signin" element={<Signin/>}/>
           <Route path="/" element={<MainPage/>}/>
+          <Route path='*' element={<ErrorPage/>}/>
         </Routes>  
         </div>
       ) }

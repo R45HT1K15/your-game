@@ -36,7 +36,7 @@ export default function Navbar() {
                             <CustomLink to='/'>Игры</CustomLink>
                             <CustomLink to={`/profile/${name}`}>{name}</CustomLink>
                             <CustomLink to='/raiting'>Общий рейтинг</CustomLink>
-                            <Link to='#' onClick={handleSignout}>Выйти</Link>
+                            <Link to='/siGame' onClick={handleSignout}>Выйти</Link>
                             <div className='switcher'>
                             <button className="classicTheme" onClick={handleClassicThemeClick}>
                                 Classic
@@ -49,6 +49,7 @@ export default function Navbar() {
                         </>
                     ) : (
                         <>
+                            <CustomLink to='/'>Своя игра</CustomLink>
                             <CustomLink to='/signin'>Войти</CustomLink>
                             <CustomLink to='/signup'>Зарегистрироваться</CustomLink>
                             <div className='switcher'>
