@@ -11,7 +11,7 @@ export function Modal ({ active, setActive, question = '' }) {
     
     const [value, setValue] = useState('')
     
-    const [time, setTime] = useState(3)
+    const [time, setTime] = useState(20)
 
     const handleChange = async (e) => {
         e.preventDefault()
