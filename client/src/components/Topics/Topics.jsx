@@ -17,30 +17,17 @@ export default function TopicList () {
     const [question, setQuestion] = useState()
     const [styleStat, setStyleStat] = useState(true)
 
-    
-
     const findQuestion = (question) => {
         console.log('question', question)
         updateStatusQuest(question.id)
         setQuestion(question)
-        modalOpen()
-        // setModalActive(true)
-    }
-
-    const modalOpen = useCallback(() => {
         setModalActive(true)
-        setTimeout(() => {
-            setModalActive(false)
-        }, 25000)
-    }, [])
+    }
 
     const handleStyle = (event) => {
         console.log('event', event)
         event.currentTarget.style.textDecorationLine = "line-through";
-        // event.currentTarget.style.pointerEvents = "none";
         event.currentTarget.parentNode.style.pointerEvents = "none";
-        // console.log('event.currentTarget.parentNode', event.currentTarget.parentNode)
-
     }
 
     useEffect(() => {
